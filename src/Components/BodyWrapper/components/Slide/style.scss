@@ -1,0 +1,159 @@
+@import "../../../../variable.scss";
+.card{
+    display: flex;
+    border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .image-container{
+    position: relative;
+    flex: 1;
+    .image-container::before {
+        content: ""; /* Create a pseudo-element */
+        position: absolute; /* Positioning context */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 50%; /* 50% of the card's height */
+        background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+        z-index: 1; /* Ensure overlay appears above image */
+      }
+
+    .image-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+  }
+  .content-container {
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* Ensure content is positioned relative to card */
+    z-index: 2;
+
+    h2{
+        font-size: 18px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    }
+    p{
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+  }
+}
+
+.slide__container {
+  grid-area: hero;
+  height: 85vh;
+  width: 90vw;
+  margin: 0 auto;
+  align-items: center;
+  display: grid;
+  
+  .swiper {
+    height: 100%;
+    width: 100%;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #cacaca;
+      font-size: 32px !important;
+      padding: 0 20px !important;
+    }
+  }
+  .slide__swipper__container {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    // padding: 40px;
+    position: relative;
+    z-index: 0;
+    // @media screen and (min-width: 426px) {
+    //   padding: 80px;
+    // }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      content: "";
+      z-index: -1;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      bottom: 100px;
+      width: 100%;
+      padding: 0 10px;
+
+      @media screen and (min-width: 426px) {
+        padding: 0 40px;
+      }
+
+      @media screen and (min-width: 1024px) {
+        padding: 0 70px;
+      }
+
+      @media screen and (min-width: 1440px) {
+        padding: 0 100px;
+      }
+
+      .title {
+        letter-spacing: 0.5px;
+        color: #fff;
+        font-family: $--heading-font-family;
+        font-size: 24px;
+        transition: 0.4s ease-in-out;
+
+        @media screen and (min-width: 426px) {
+          font-size: 35px;
+          text-shadow: 1px 1px 2px #000;
+        }
+      }
+      p {
+        margin-left: 0px;
+        font-size: 18px;
+        text-shadow: 5px 0px 10px #000;
+        font-family: $--ceo-heading;
+        color: rgba(255, 255, 255, 0.922);
+        line-height: 1.5;
+
+        @media screen and (min-width: 769px) {
+          width: 60px;
+        }
+      }
+      button {
+        all: unset;
+        width: fit-content;
+        border: 1px solid #ccc;
+        padding: 10px 20px;
+        background-color: #36b6aa;
+        cursor: pointer;
+        border-radius: 7px;
+        color: #ffffffe1;
+        transition: 0.4s ease;
+        display: none;
+
+        &:hover {
+          border: 1px solid #36b6aa;
+          background-color: #fff;
+          color: #000;
+        }
+      }
+    }
+  }
+}
